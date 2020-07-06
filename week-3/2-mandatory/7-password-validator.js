@@ -21,10 +21,10 @@ Expected Result:
 PasswordValidationResult=  [false, false, false, false, true]
 
 */
-
+// const passwords2 = ["StUFf27%", "Pl3nty!", "Jai33", "shajsaUA**&&", "Pl3nty!"]
 function validatePasswords(arr) {
   let bigArrayOfChar = arr.map(element => element.split('')); //map returns a new array
-  let result1 = bigArrayOfChar.map(index => index.some(isNum) && index.some(isUpperCase) && index.some(isLowerCase));
+  let result1 = bigArrayOfChar.map(index => index.some(isNum) && index.some(isUpperCase) && index.some(isLowerCase) && index.some(isSymbols) && index.length >=5);
   let result2 = arr.map(fiveChar);
   return result1 && result2;
 }
@@ -47,16 +47,16 @@ function fiveChar(word) {
   let newWord = word.length >= 5;
   return newWord;
 }
-function hasSymbols(word) {
-  //let newWord = word.includes("!").includes(, "#", "$", "%", "."));
-  let regex = /[!#$%.*&];
-  return regex.test(word);
+function isSymbols(word) {
+  let newWord = word.split(''); //output ["w", "o", "r", "d"]
+  let res = newWord.some(x => x === '!' || x === '#' || x === '.' || x === '$' || x === '%');
+  return res;
 }
-console.log(validatePasswords(passwords2));
+
 /* ======= TESTS - DO NOT MODIFY ===== */
 
 const passwords1 = ["Se%5", "TktE.TJTU", "384#HsHF", "dvyyeyy!5", "tryT3729"]
-const passwords2 = ["StUFf27%", "Pl3nty!", "Jai33", "shajsaUA**&&", "Pl3nty!"]
+const passwords2 = ["StUFf27%", "Pl3nty!", "Jai33", "shajsaUA**&&", "Pl3nty"]
 
 const util = require('util');
 
