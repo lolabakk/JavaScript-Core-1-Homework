@@ -7,8 +7,15 @@
 
   NOTE: don't include any element that is not a "family".
 */
+function planetPeople(name) {
+  return name[0] === "A" && name.includes("family");
 
-function colonisers() {
+}
+function colonisers(arr) {
+  let familyA = arr.filter(planetPeople);
+  return familyA;
+
+
 
 }
 

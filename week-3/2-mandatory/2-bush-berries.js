@@ -9,27 +9,42 @@
 
   Use the tests to confirm which message to return
 */
+let bushBerryColours1 = ["pink", "pink", "pink", "neon", "pink", "transparent"];
+let bushBerryColours2 = ["pink", "pink", "pink", "pink"];
 
-function bushChecker() {
+function checkBerry(berry) {
+  return berry === "pink";
+}
 
+function bushChecker(arr) {
+  let result = "";
+  let pinkBerry = arr.every(checkBerry);
+  if (pinkBerry === true) {
+    result = "Bush is safe to eat from";
+  } else {
+    result = "Toxic! Leave bush alone!";
+  }
+  return result;
 }
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
-let bushBerryColours1 = ["pink", "pink", "pink", "neon", "pink", "transparent"]
-let bushBerryColours2 = ["pink", "pink", "pink", "pink"]
+// let bushBerryColours1 = ["pink", "pink", "pink", "neon", "pink", "transparent"]
+// let bushBerryColours2 = ["pink", "pink", "pink", "pink"]
 
-const util = require('util');
+const util = require("util");
 
 function test(test_name, actual, expected) {
-    let status;
-    if (actual === expected) {
-        status = "PASSED";
-    } else {
-        status = `FAILED: expected: ${util.inspect(expected)} but your function returned: ${util.inspect(actual)}`;
-    }
+  let status;
+  if (actual === expected) {
+    status = "PASSED";
+  } else {
+    status = `FAILED: expected: ${util.inspect(
+      expected
+    )} but your function returned: ${util.inspect(actual)}`;
+  }
 
-    console.log(`${test_name}: ${status}`);
+  console.log(`${test_name}: ${status}`);
 }
 
 test(
